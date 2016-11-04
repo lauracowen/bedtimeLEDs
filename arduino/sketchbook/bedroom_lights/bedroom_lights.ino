@@ -32,6 +32,7 @@ unsigned long timeLastChanged = 0; // Number of msecs since LED state changed la
 int trigger_count = 0;
 #define TRIGGER_COUNT_THRESHOLD 5
 
+#define AUTO_OFF 2*60*60*1000 //7.2million msecs, aka 2 hours
 
 
 void setup() {
@@ -48,7 +49,17 @@ void setup() {
 }
 
 void loop() {
-  uint16_t i, j;
+  
+  
+  if (ledOn) {
+    if (millis() - timeLastChanged >= AUTO_OFF) {
+      ledOn = false;
+    }
+  }
+  
+  
+  
+  uint16_t i, j;  //unsigned integer in 16 bits
   for(j=0; j<256; j++) { // cycles through colors on wheel
     // read the value from the sensor:
     sensorValue = analogRead(sensorPin);    
