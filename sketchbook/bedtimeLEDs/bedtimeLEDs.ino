@@ -32,7 +32,7 @@ unsigned long timeLastChanged = 0; // Number of msecs since LED state changed la
 int trigger_count = 0;
 #define TRIGGER_COUNT_THRESHOLD 5
 
-#define AUTO_OFF 2*60*60*1000  //7.2million msecs, aka 2 hours
+#define AUTO_OFF 7200000 //2*60*60*1000  //7.2million msecs, aka 2 hours
 
 
 void setup() {
